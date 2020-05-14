@@ -41,6 +41,50 @@ form input {
     font-size: 18px;
 }
 
+ul {
+    list-style-type: none;
+    padding: 0;
+
+
+}
+
+li {
+    padding: 20px;
+    background: #f6f6f6;
+    font-size: 20px;
+    color: #555;
+    position: relative;
+    border-bottom: 1px solid #e6e6e6;
+    height: 46px;
+}
+
+li:nth-child(even) {
+    padding: 20px;
+    background: #f2f2f2;
+}
+
+li span {
+    display: block;
+}
+
+li span:nth-child(2) {
+    font-size: 16px;
+    margin-top: 6px;
+    color: #999;
+}
+
+li div {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    background: rgba(255, 255, 255, 0.6);
+    width: 40px;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 button {
     float: right;
     margin-right: 10%;
