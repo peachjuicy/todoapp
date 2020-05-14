@@ -1,20 +1,47 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="todo.css" />
 
-    </head>
-    <body>
-        <h1>Todo tasks</h1>
+<head>
+    <!-- The core Firebase JS SDK is always required and must be listed first/loads firebase library -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+    <!--loads firestore service from firebase-->
+    <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-firestore.js"></script>
+    <!--connects css and google font-->
+    <link rel="stylesheet" href="todo.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+</head>
 
-        <div class="taks-content">
-            <form>
-                <input type="text"  name="task" placeholder="Todo task">
-                <button>Add task</button>
-            </form>
+<body>
+    <h1>Todo tasks</h1>
 
-            <ul id="task-list"></ul>
-        </div>
-        <script src="todo.js"></script>
+    <div class="task-content">
+        <form>
+            <input type="text" name="task" placeholder="Todo task">
+            <button>Add task</button>
+        </form>
 
-    </body>
+        <ul id="task-list"></ul>
+    </div>
+
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBnGhZ81ly6JeIX8C5UD9_XetSMFQBEcWg",
+            authDomain: "todoapp-26879.firebaseapp.com",
+            databaseURL: "https://todoapp-26879.firebaseio.com",
+            projectId: "todoapp-26879",
+            storageBucket: "todoapp-26879.appspot.com",
+            messagingSenderId: "384203060015",
+            appId: "1:384203060015:web:fd92fcf596b6d8776a27da",
+            measurementId: "G-TFQWS2CR5E"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        //storing database inside db const-reference to the database
+        const db = firebase.firestore();
+    </script>
+    <script src="todo.js"></script>
+
+</body>
+
 </html>
