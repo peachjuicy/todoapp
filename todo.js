@@ -20,6 +20,7 @@ renderTasks = (doc) => {
     li.appendChild(task);
     li.appendChild(x);
     taskList.appendChild(li);
+
     //deleting data
     x.addEventListener("click", (event) => {
         event.stopPropagation(); //prevents bubbling, event is handled only on x
@@ -31,11 +32,17 @@ renderTasks = (doc) => {
 //getting data
 //snapshot represents data inside the collection
 //forEach represents all documents inside the collection
-db.collection("tasks").get().then((snapshot) => {
-    snapshot.forEach(doc => {
-        renderTasks(doc);
+db.collection("tasks").onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
+    changes.forEach(change => {
+        if (change.type == "added") {
+            renderTasks(change.doc);
+        } else if (change.type == "removed") {
+            let li = taskList.querySelector('[data-id=' + change.doc.id + ']');
+            taskList.removeChild(li);
+        }
     })
-})
+});
 
 //saving data in to the db
 taskForm.addEventListener("submit", (event) => {
