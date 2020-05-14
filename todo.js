@@ -20,6 +20,12 @@ renderTasks = (doc) => {
     li.appendChild(task);
     li.appendChild(x);
     taskList.appendChild(li);
+    //deleting data
+    x.addEventListener("click", (event) => {
+        event.stopPropagation(); //prevents bubbling, event is handled only on x
+        let id = event.target.parentElement.getAttribute("data-id"); //event target (x) is getting the parent element and taking it's attribute, the document id (the id generated in database)
+        db.collection("tasks").doc(id).delete(); //getting the db=> collection=> documents with its id and deleting it. 
+    })
 }
 
 //getting data
@@ -41,5 +47,3 @@ taskForm.addEventListener("submit", (event) => {
     //empty the input field after clicking the button
     taskForm.task.value = " ";
 })
-
-//deleting data
